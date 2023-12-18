@@ -71,6 +71,19 @@ main {
   z-index: -9;
 }
 
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 960px;
+    margin: 0 auto;
+  }
+}
+
 @keyframes card {
   0% {
     opacity: 0;

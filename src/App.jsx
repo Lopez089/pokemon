@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-//Todo
-// que salga columna de 4 en pantalas grandes
-// que se vea bien en todos loa dispositivos
-
-
 const App = () => {
   const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(true);
