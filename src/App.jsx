@@ -1,5 +1,15 @@
 import { useState, useEffect } from 'react'
+import { Modal } from './components'
 import './App.css'
+
+
+// TODO:
+// crear una car donde se vera todo la info 
+// poner la info que voy a poner ficticia
+// darle estilos como lo quiero
+// cuando hace click se activa el modal
+// cuando se hace click se gurda los datos del pkemon y se muestra en el modal
+// 
 
 const App = () => {
   const [pokemons, setPokemons] = useState([])
@@ -70,7 +80,7 @@ const App = () => {
           </section>)
 
       }
-
+      <Modal />
     </main >
   )
 }

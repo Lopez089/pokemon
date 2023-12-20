@@ -1,0 +1,24 @@
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #878787b5;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-card {
+  min-width: 400px;
+  min-height: 450px;
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+}
