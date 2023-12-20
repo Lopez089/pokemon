@@ -80,7 +80,7 @@ const App = () => {
           </section>)
 
       }
-      <Modal />
+      {/* <Modal /> */}
     </main >
   )
 }
