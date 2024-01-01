@@ -4,18 +4,18 @@ import './App.css'
 
 
 // TODO:
-// crear una car donde se vera todo la info 
-// poner la info que voy a poner ficticia
-// darle estilos como lo quiero
-// cuando hace click se activa el modal
-// cuando se hace click se gurda los datos del pkemon y se muestra en el modal
-// 
+// cuando se hace click se guarda el del poquemo que seleciono
+// cerrar modal
+// extraer en componentes
+// colores del pokemon que seleciones
+// mejorar los estolos
 
 const App = () => {
   const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(true);
+  const [pokemonInfo, setPokemonInfo] = useState(null)
 
-  const getPokemon = async (limit = 40) => {
+  const getPokemon = async (limit = 4) => {
     const baseUrl = 'https://pokeapi.co/api/v2'
 
     const res = await fetch(`${baseUrl}/pokemon?limit=${limit}&offset=0`)
@@ -50,7 +50,54 @@ const App = () => {
     getPokemon()
   }, []);
 
+  const getPokemonInfo = async (pokemon) => {
+    try {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+      const data = await res.json()
 
+      const responseSpecie = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`)
+      const dataSpecie = await responseSpecie.json()
+
+      return {
+        name: data.name,
+        type: data.types[0].type.name,
+        img: data.sprites.front_default,
+        description: dataSpecie.flavor_text_entries[6].flavor_text,
+        info: [
+          {
+            name: 'height',
+            info: data.height,
+          },
+          {
+            name: 'weight',
+            info: data.weight,
+          },
+          {
+            name: 'category',
+            info: (dataSpecie.genera[7].genus).split(' ')[0],
+          },
+          {
+            name: 'abilities',
+            info: data.abilities[0].ability.name,
+          }
+        ],
+        characteristics:
+          data.stats.map(stat => {
+            return {
+              base_start: stat.base_stat,
+              name: stat.stat.name,
+            }
+          })
+
+      }
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  const handleModal = async () => {
+    setPokemonInfo(await getPokemonInfo(25))
+  }
 
   return (
     <main>
@@ -65,7 +112,12 @@ const App = () => {
             {
               pokemons.map(pokemon => {
                 return (
-                  <article className='card' key={pokemon.id} style={{ 'backgroundColor': pokemon.color }}>
+                  <article
+                    className='card'
+                    key={pokemon.id}
+                    style={{ 'backgroundColor': pokemon.color }}
+                    onClick={() => handleModal()}
+                  >
                     <img src={pokemon.img} alt={pokemon.name} />
                     <h3>{pokemon.name}</h3>
                     <p>{
@@ -80,7 +132,9 @@ const App = () => {
           </section>)
 
       }
-      {/* <Modal /> */}
+      {
+        pokemonInfo && <Modal pokemon={pokemonInfo} />
+      }
     </main >
   )
 }
