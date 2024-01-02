@@ -38,7 +38,6 @@ export const Modal = ({ pokemon }) => {
           {
             // eslint-disable-next-line react/prop-types
             pokemon.characteristics.map((characteristic, key) => {
-              console.log("🚀 ~ file: modal.jsx:50 ~ pokemon.characteristics.map ~ characteristic:", characteristic.name)
               return (
                 <div className='wrap_bar' key={key}>
                   <div className="bar_container" >

@@ -4,7 +4,6 @@ import './App.css'
 
 
 // TODO:
-// cuando se hace click se guarda el del poquemo que seleciono
 // cerrar modal
 // extraer en componentes
 // colores del pokemon que seleciones
@@ -95,8 +94,8 @@ const App = () => {
     }
   }
 
-  const handleModal = async () => {
-    setPokemonInfo(await getPokemonInfo(25))
+  const handleModal = async (id) => {
+    setPokemonInfo(await getPokemonInfo(id))
   }
 
   return (
@@ -116,7 +115,7 @@ const App = () => {
                     className='card'
                     key={pokemon.id}
                     style={{ 'backgroundColor': pokemon.color }}
-                    onClick={() => handleModal()}
+                    onClick={() => handleModal(pokemon.id)}
                   >
                     <img src={pokemon.img} alt={pokemon.name} />
                     <h3>{pokemon.name}</h3>
