@@ -4,7 +4,6 @@ import './App.css'
 
 
 // TODO:
-// cerrar modal
 // extraer en componentes
 // colores del pokemon que seleciones
 // mejorar los estolos
@@ -132,7 +131,7 @@ const App = () => {
 
       }
       {
-        pokemonInfo && <Modal pokemon={pokemonInfo} />
+        pokemonInfo && <Modal pokemon={pokemonInfo} pokemonInfo={setPokemonInfo} />
       }
     </main >
   )

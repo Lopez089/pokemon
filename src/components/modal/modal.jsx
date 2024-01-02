@@ -1,8 +1,8 @@
 import './modal.css'
 
-export const Modal = ({ pokemon }) => {
+export const Modal = ({ pokemon, pokemonInfo }) => {
   return (
-    <section className='modal'>
+    <section className='modal' onClick={() => pokemonInfo(null)}>
       <div className='modal-card'>
         <section className="modal-card-details">
           <div>
@@ -11,6 +11,14 @@ export const Modal = ({ pokemon }) => {
           </div>
           <div className="modal-card-img">
             <img src={pokemon.img} alt={`imagen pokemon ${pokemon.name}`} />
+          </div>
+          <div>
+            <span
+              className="material-symbols-outlined"
+              onClick={() => pokemonInfo(null)}
+            >
+              close
+            </span>
           </div>
         </section >
         <section className="modal-card-info">
