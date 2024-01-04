@@ -28,7 +28,7 @@
   display: flex;
   justify-content: space-evenly;
   text-align: left;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 
 }
 
@@ -45,13 +45,16 @@
 
 .modal-card-img {
   width: 100%;
+  height: 150px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-card-details img {
-  width: 150px;
+  scale: 2.3;
   position: absolute;
-  top: -125px;
 }
 
 .modal-card-info {
