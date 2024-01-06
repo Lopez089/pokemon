@@ -1,21 +1,17 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Modal } from './components'
 import './App.css'
 
 
 // TODO:
+// efectos hacerlos con style component
 // colores del pokemon que seleciones
-// mejorar los estolos
-// efectos
 // extraer en componentes
 
 const App = () => {
   const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(true);
   const [pokemonInfo, setPokemonInfo] = useState(null)
-  const ref = useRef([])
-  console.log("🚀 ~ file: App.jsx:17 ~ App ~ ref:", ref.current)
-
 
   const getPokemon = async (limit = 4) => {
     const baseUrl = 'https://pokeapi.co/api/v2'
@@ -52,11 +48,7 @@ const App = () => {
     getPokemon()
   }, []);
 
-  useEffect(() => {
-    const a = ref.current
-    console.log("🚀 ~ file: App.jsx:57 ~ useEffect ~ a:", a)
 
-  }, [pokemons]);
   const getPokemonInfo = async (pokemon) => {
     try {
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
@@ -120,7 +112,6 @@ const App = () => {
               pokemons.map(pokemon => {
                 return (
                   <article
-                    ref={ref}
                     className='card'
                     key={pokemon.id}
                     style={{ 'backgroundColor': pokemon.color }}

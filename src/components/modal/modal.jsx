@@ -1,4 +1,7 @@
+import { Characteristics } from '../'
 import './modal.css'
+
+
 
 export const Modal = ({ pokemon, pokemonInfo }) => {
   return (
@@ -45,15 +48,9 @@ export const Modal = ({ pokemon, pokemonInfo }) => {
         <section className="atributes">
           {
             // eslint-disable-next-line react/prop-types
-            pokemon.characteristics.map((characteristic, key) => {
+            pokemon.characteristics.map((characteristic, index) => {
               return (
-                <div className='wrap_bar' key={key}>
-                  <div className="bar_container" >
-                    <div style={{ height: `${characteristic.base_start}%` }} className="bar_container-bar">
-                    </div>
-                  </div>
-                  <p className='text_bar'>{characteristic.name}</p>
-                </div>
+                <Characteristics characteristic={characteristic} key={index} />
               )
             })
           }
