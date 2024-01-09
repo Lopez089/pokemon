@@ -9,7 +9,7 @@ const App = () => {
   const ref = useRef([])
 
 
-  const getPokemon = async (limit = 4) => {
+  const getPokemon = async (limit = 25) => {
     const baseUrl = 'https://pokeapi.co/api/v2'
 
     const res = await fetch(`${baseUrl}/pokemon?limit=${limit}&offset=0`)
