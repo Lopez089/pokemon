@@ -1,49 +1,15 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
+import { useListPokemons } from './hooks'
 import { Modal } from './components'
 import './App.css'
 
+// Todo 
+// refactor de get de listado de pokemon
+// refactor del info pokemon
+
 const App = () => {
-  const [pokemons, setPokemons] = useState([])
-  const [loading, setLoading] = useState(true);
+  const { pokemons, loading, ref } = useListPokemons()
   const [pokemonInfo, setPokemonInfo] = useState(null)
-  const ref = useRef([])
-
-
-  const getPokemon = async (limit = 25) => {
-    const baseUrl = 'https://pokeapi.co/api/v2'
-
-    const res = await fetch(`${baseUrl}/pokemon?limit=${limit}&offset=0`)
-    const data = await res.json()
-
-    const promise = data.results.map(async (pokemon) => {
-      const res = await fetch(pokemon.url)
-      const data = await res.json()
-      return data
-    })
-
-    const allPokemon = await Promise.all(promise)
-
-    const promiseDataSpecies = allPokemon.map(async (pokemon) => {
-      const res = await fetch(pokemon.species.url)
-      const data = await res.json()
-      return {
-        id: pokemon.id,
-        name: pokemon.name,
-        color: data.color.name,
-        img: pokemon.sprites.front_default
-      }
-    })
-
-    const allPokemonData = await Promise.all(promiseDataSpecies)
-
-    setPokemons(allPokemonData)
-    setLoading(false)
-  }
-
-  useEffect(() => {
-    getPokemon()
-  }, []);
-
 
   const getPokemonInfo = async (pokemon) => {
     try {
@@ -96,32 +62,6 @@ const App = () => {
   const handleModal = async (id) => {
     setPokemonInfo(await getPokemonInfo(id))
   }
-
-  useEffect(() => {
-    if (ref) {
-      const colorRGBPokemon = ref.current.map(pokemonElement => {
-        const element = window.getComputedStyle(pokemonElement)
-        const rgb = element.getPropertyValue('background-color')
-
-        return {
-          id: pokemonElement.getAttribute('id'),
-          color: rgb,
-        }
-      })
-      if (pokemons) {
-        setPokemons(oldState => {
-          const pokemonsColorRGB = oldState.map(pokemon => {
-            const pokemonColor = colorRGBPokemon.find((e) => { return e.id == pokemon.id })
-            return {
-              ...pokemon,
-              color: pokemonColor.color.slice(0, -1) + ' , 0.6)'
-            }
-          })
-          return pokemonsColorRGB
-        })
-      }
-    }
-  }, [loading]);
 
   return (
     <main>
