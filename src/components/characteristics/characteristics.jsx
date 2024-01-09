@@ -7,8 +7,6 @@ export const Characteristics = ({ characteristic }) => {
     <div className='wrap_bar'>
       <div className="bar_container" >
         <ProgressBar baseStart={`${characteristic.base_start}%`} />
-        {/* <div style={{ height: `${characteristic.base_start}%` }} className="bar_container-bar">
-        </div> */}
       </div>
       <p className='text_bar'>{characteristic.name}</p>
     </div>

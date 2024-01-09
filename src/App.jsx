@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Modal } from './components'
 import './App.css'
 
 
 // TODO:
-// efectos hacerlos con style component
 // colores del pokemon que seleciones
 // extraer en componentes
 
@@ -12,6 +11,8 @@ const App = () => {
   const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(true);
   const [pokemonInfo, setPokemonInfo] = useState(null)
+  const ref = useRef([])
+
 
   const getPokemon = async (limit = 4) => {
     const baseUrl = 'https://pokeapi.co/api/v2'
@@ -98,6 +99,33 @@ const App = () => {
     setPokemonInfo(await getPokemonInfo(id))
   }
 
+  useEffect(() => {
+    if (ref) {
+      const colorRGBPokemon = ref.current.map(pokemonElement => {
+        const element = window.getComputedStyle(pokemonElement)
+        const rgb = element.getPropertyValue('background-color')
+
+        return {
+          id: pokemonElement.getAttribute('id'),
+          color: rgb,
+        }
+      })
+      if (pokemons) {
+        setPokemons(oldState => {
+          const pokemonsColorRGB = oldState.map(pokemon => {
+            const pokemonColor = colorRGBPokemon.find((e) => { return e.id == pokemon.id })
+            return {
+              ...pokemon,
+              color: pokemonColor.color.slice(0, -1) + ' , 0.6)'
+            }
+          })
+          console.log("🚀 ~ file: App.jsx:123 ~ pokemonsColorRGB ~ pokemonsColorRGB:", pokemonsColorRGB)
+          return pokemonsColorRGB
+        })
+      }
+    }
+  }, [loading]);
+
   return (
     <main>
       <h1>Pokemon</h1>
@@ -109,9 +137,11 @@ const App = () => {
         ) : (
           <section className='container'>
             {
-              pokemons.map(pokemon => {
+              pokemons.map((pokemon, index) => {
                 return (
                   <article
+                    ref={element => ref.current[index] = element}
+                    id={pokemon.id}
                     className='card'
                     key={pokemon.id}
                     style={{ 'backgroundColor': pokemon.color }}
