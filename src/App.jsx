@@ -2,11 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { Modal } from './components'
 import './App.css'
 
-
-// TODO:
-// colores del pokemon que seleciones
-// extraer en componentes
-
 const App = () => {
   const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(true);
@@ -54,12 +49,15 @@ const App = () => {
     try {
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
       const data = await res.json()
+      console.log("🚀 ~ file: App.jsx:57 ~ getPokemonInfo ~ data:", data)
 
       const responseSpecie = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`)
       const dataSpecie = await responseSpecie.json()
 
       return {
         name: data.name,
+        id: data.id,
+        color: pokemons[data.id - 1].color,
         type: data.types[0].type.name,
         img: data.sprites.front_default,
         description: dataSpecie.flavor_text_entries[6].flavor_text,
@@ -119,7 +117,6 @@ const App = () => {
               color: pokemonColor.color.slice(0, -1) + ' , 0.6)'
             }
           })
-          console.log("🚀 ~ file: App.jsx:123 ~ pokemonsColorRGB ~ pokemonsColorRGB:", pokemonsColorRGB)
           return pokemonsColorRGB
         })
       }
