@@ -6,20 +6,20 @@ export const Characteristics = ({ characteristic, color }) => {
   return (
     <div className='wrap_bar'>
       <div className="bar_container" >
-        <ProgressBar baseStart={`${characteristic.base_start}%`} color={color} />
+        <ProgressBar basestart={`${characteristic.base_start}%`} color={color} />
       </div>
       <p className='text_bar'>{characteristic.name}</p>
     </div>
   )
 }
 
-const progress = (baseStart) => keyframes`
+const progress = (basestart) => keyframes`
   0%{
     height:0%;
   }
 
   100%{
-    height: ${baseStart}};
+    height: ${basestart}};
   }
 `
 
@@ -28,6 +28,6 @@ const ProgressBar = styled.div`
   bottom: 0;
   width: 100%;
   background: ${props => props.color};
-  animation: ${props => progress(props.baseStart)} 1s ease forwards 500ms;
+  animation: ${props => progress(props.basestart)} 1s ease forwards 500ms;
 }
 `
