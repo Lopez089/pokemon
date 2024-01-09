@@ -30,6 +30,8 @@ main {
   position: relative;
   animation: card 4s ease-in-out;
   color: #3a3a3a;
+  cursor: pointer;
+  -webkit-animation: card 4s ease-in-out;
 }
 
 .card img {

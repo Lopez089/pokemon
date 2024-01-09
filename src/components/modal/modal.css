@@ -13,12 +13,103 @@
 
 .modal-card {
   min-width: 400px;
-  min-height: 450px;
+  max-width: 450px;
+  min-height: 300px;
   background: #ffffff;
-  padding: 1.5rem;
+  padding: 2.5rem;
   border-radius: .5rem;
   -webkit-border-radius: .5rem;
   -moz-border-radius: .5rem;
   -ms-border-radius: .5rem;
   -o-border-radius: .5rem;
+  animation: card-modal 1s ease-in-out;
+  -webkit-animation: card-modal 1s ease-in-out;
+}
+
+.modal-card-details {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: left;
+  margin-bottom: 1rem;
+
+}
+
+.modal-card-details h3 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.modal-card-details p {
+  font-size: .8rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.modal-card-img {
+  width: 100%;
+  height: 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-card-details img {
+  scale: 2.3;
+  position: absolute;
+}
+
+.modal-card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-card-info>div {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*  componente
+*/
+
+.characteristics p {
+  margin: 0;
+}
+
+
+.characteristics-info {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.atributes {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.atributes p {
+  font-size: .8rem;
+  font-weight: 600;
+  margin: .3rem;
+}
+
+@keyframes card-modal {
+  0% {
+    opacity: 0;
+    transform: scale(.9);
+    -webkit-transform: scale(.9);
+    -moz-transform: scale(.9);
+    -ms-transform: scale(.9);
+    -o-transform: scale(.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+  }
 }
