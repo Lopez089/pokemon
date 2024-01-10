@@ -4,6 +4,7 @@ import { getColorRGBPokemon, assignNewColors } from '../utils'
 
 export const useListPokemons = () => {
   const [pokemons, setPokemons] = useState([])
+  console.log("🚀 ~ useListPokemons ~ pokemons:", pokemons)
   const [loading, setLoading] = useState(true);
   const ref = useRef([])
 
