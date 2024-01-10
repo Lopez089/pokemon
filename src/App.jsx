@@ -2,6 +2,11 @@ import { useListPokemons, usePokemonInfo } from './hooks'
 import { Modal } from './components'
 import './App.css'
 
+// todo 
+// refactorizar app
+// component
+// otros
+
 const App = () => {
   const { pokemons, loading, ref } = useListPokemons()
   const { handleModal, pokemonInfo, setPokemonInfo } = usePokemonInfo(pokemons)
