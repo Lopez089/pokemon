@@ -4,10 +4,10 @@ import { getColorRGBPokemon, assignNewColors } from '../utils'
 
 export const useListPokemons = () => {
   const [pokemons, setPokemons] = useState([])
-  console.log("🚀 ~ useListPokemons ~ pokemons:", pokemons)
   const [loading, setLoading] = useState(true);
   const ref = useRef([])
 
+  console.log("🚀 ~ useListPokemons ~ pokemons:", pokemons)
   useEffect(() => async () => {
     setPokemons(await getPokemon())
     console.log('1')
