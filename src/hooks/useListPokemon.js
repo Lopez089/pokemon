@@ -9,7 +9,9 @@ export const useListPokemons = () => {
 
   useEffect(() => async () => {
     setPokemons(await getPokemon())
+    console.log('1')
     setLoading(false)
+    console.log('2')
   }, [])
 
   useEffect(() => {
