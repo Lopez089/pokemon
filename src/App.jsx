@@ -4,7 +4,6 @@ import { ContainerListPokemon } from './containers'
 import './App.css'
 
 // todo 
-// refactorizar app
 // component
 // otros
 
