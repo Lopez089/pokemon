@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import styled, { keyframes } from 'styled-components'
+import { ProgressBar } from '../../components'
 import './characteristic.css'
 
 export const Characteristics = ({ characteristic, color }) => {
@@ -13,21 +13,4 @@ export const Characteristics = ({ characteristic, color }) => {
   )
 }
 
-const progress = (basestart) => keyframes`
-  0%{
-    height:0%;
-  }
 
-  100%{
-    height: ${basestart}};
-  }
-`
-
-const ProgressBar = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: ${props => props.color};
-  animation: ${props => progress(props.basestart)} 1s ease forwards 500ms;
-}
-`

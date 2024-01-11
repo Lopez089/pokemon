@@ -4,8 +4,7 @@ import { ContainerListPokemon } from './containers'
 import './App.css'
 
 // todo 
-// component
-// otros
+// refactor css en cada componente
 
 const App = () => {
   const { pokemons, loading, ref } = useListPokemons()
