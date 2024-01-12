@@ -6,15 +6,15 @@ export const ContainerListPokemon = ({ loading, pokemons, referece, handleModal 
   return (
     <>
       {
-        loading ? (
+        loading ?
           <Loading />
-        ) : (
-          <ContainerCardPokemon
-            pokemons={pokemons}
-            referece={referece}
-            handleModal={handleModal}
-          />
-        )
+          : (
+            <ContainerCardPokemon
+              pokemons={pokemons}
+              referece={referece}
+              handleModal={handleModal}
+            />
+          )
 
       }
     </>
