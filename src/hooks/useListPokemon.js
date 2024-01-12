@@ -8,7 +8,8 @@ export const useListPokemons = () => {
   const ref = useRef([])
 
   useEffect(() => async () => {
-    setPokemons(await getPokemon())
+    const pokemosAll = await getPokemon()
+    setPokemons(pokemosAll)
     setLoading(false)
   }, [])
 
