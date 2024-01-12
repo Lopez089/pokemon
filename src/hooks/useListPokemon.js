@@ -7,14 +7,19 @@ export const useListPokemons = () => {
   const [loading, setLoading] = useState(true);
   const ref = useRef([])
 
-  useEffect(() => async () => {
-    try {
-      const pokemosAll = await getPokemon()
-      setPokemons(pokemosAll)
-      setLoading(!loading)
-    } catch (error) {
-      console.error(error)
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const pokemosAll = await getPokemon()
+        setPokemons(pokemosAll)
+        setLoading(false)
+      } catch (error) {
+        console.error(error)
+      }
     }
+
+    fetchData()
   }, [])
 
   useEffect(() => {
