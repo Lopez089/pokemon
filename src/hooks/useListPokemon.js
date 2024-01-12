@@ -8,14 +8,17 @@ export const useListPokemons = () => {
   const ref = useRef([])
 
   useEffect(() => async () => {
-    const pokemosAll = await getPokemon()
-    setPokemons(pokemosAll)
-    setLoading(false)
+    try {
+      const pokemosAll = await getPokemon()
+      setPokemons(pokemosAll)
+      setLoading(!loading)
+    } catch (error) {
+      console.error(error)
+    }
   }, [])
 
   useEffect(() => {
     const pokemoncolortRGB = getColorRGBPokemon(ref)
-
     setPokemons(oldState => {
       return assignNewColors(oldState, pokemoncolortRGB)
     })
