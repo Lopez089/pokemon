@@ -9,7 +9,7 @@ export const useListPokemons = () => {
 
   useEffect(() => async () => {
     setPokemons(await getPokemon())
-    setLoading(false)
+    return setLoading(false)
   }, [])
 
   useEffect(() => {
