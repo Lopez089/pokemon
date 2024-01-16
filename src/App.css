@@ -4,8 +4,67 @@
   text-align: center;
 }
 
+header {
+  height: 150px;
+  background: #eaeaea;
+  padding-top: 40px;
+  margin-bottom: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
 h1 {
   font-size: 3rem;
+  margin: 0;
+}
+
+.container-form {
+  height: 35px;
+  position: absolute;
+  bottom: -15px;
+}
+
+.container-form form {
+  grid-template-columns: 200px 1fr 200px;
+  display: grid;
+  height: auto;
+  box-shadow: 0px 5px 6px 0px #00000040;
+  border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+}
+
+select,
+input,
+button[type="submit"] {
+  font-size: 1rem;
+  border: none;
+  padding: .8rem;
+}
+
+select {
+  border-radius: .5rem 0 0 .5rem;
+  -webkit-border-radius: .5rem 0 0 .5rem;
+  -moz-border-radius: .5rem 0 0 .5rem;
+  -ms-border-radius: .5rem 0 0 .5rem;
+  -o-border-radius: .5rem 0 0 .5rem;
+}
+
+button[type='submit'] {
+  border-radius: 0 .5rem .5rem 0;
+  -webkit-border-radius: 0 .5rem .5rem 0;
+  -moz-border-radius: 0 .5rem .5rem 0;
+  -ms-border-radius: 0 .5rem .5rem 0;
+  -o-border-radius: 0 .5rem .5rem 0;
+}
+
+
+button {
+  background: rgb(252, 105, 105);
+  ;
 }
 
 main {
@@ -18,6 +77,7 @@ main {
   padding: 1rem;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+
 }
 
 .card {
@@ -81,6 +141,11 @@ main {
 
 @media (min-width: 992px) {
   .container {
+    width: 960px;
+    margin: 0 auto;
+  }
+
+  .container-form {
     width: 960px;
     margin: 0 auto;
   }

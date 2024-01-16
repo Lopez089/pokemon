@@ -12,7 +12,22 @@ const App = () => {
 
   return (
     <main>
-      <h1>Pokemon</h1>
+      <header>
+        <section>
+          <h1>Pokemon APP</h1>
+        </section>
+        <section className="container-form">
+          <form>
+            <select>
+              <option value="4" key="1">sfasf</option>
+              <option value="4" key="1">sfasf</option>
+              <option value="4" key="1">sfasf</option>
+            </select>
+            <input type="text" name="search" id="" />
+            <button type='submit'>Buscar</button>
+          </form>
+        </section>
+      </header>
       <ContainerListPokemon
         loading={loading}
         pokemons={pokemons}
